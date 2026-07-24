@@ -44,5 +44,4 @@ create policy "anon can read attendance"
 6. 이후 `main` 브랜치에 git push할 때마다 자동으로 재배포됩니다.
 
 ## 참고
-- 실제 이름 30명은 아직 플레이스홀더입니다 — 실제 명단을 주시면 반영하겠습니다.
 - `출퇴근 키오스크.dc.html`과 `index.html`은 동일한 내용입니다. `index.html`은 Vercel이 루트 경로에서 정적 파일로 인식할 수 있도록 추가한 파일입니다.

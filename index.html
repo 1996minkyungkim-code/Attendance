@@ -18,46 +18,50 @@
 </style>
 </helmet>
 
-<div style="width:100vw;height:100vh;background:#f3f2ee;position:relative;overflow:hidden;display:flex;flex-direction:column;font-size:clamp(10px, min(1vw, 1.7vh), 20px);">
+<div style="width:100vw;height:100vh;background:#f3f2ee;position:relative;overflow:hidden;display:flex;flex-direction:column;font-size:clamp(11px, 4.4vw, 28px);">
 
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:2.25em 3.5em 0 3.5em;">
-    <div style="font-size:1.625em;font-weight:700;color:#1c2230;letter-spacing:-0.02em;">연구실 출퇴근 관리</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:1.75em 2em 0 2em;">
+    <div style="font-size:1.25em;font-weight:700;color:#1c2230;letter-spacing:-0.02em;">연구실 출퇴근 관리</div>
     <div style="text-align:right;">
-      <div style="font-size:2.75em;font-weight:800;color:#1c2230;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">{{ clockTime }}</div>
-      <div style="font-size:1.125em;font-weight:500;color:#6b7280;margin-top:0.125em;">{{ clockDate }}</div>
+      <div style="font-size:1.75em;font-weight:800;color:#1c2230;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">{{ clockTime }}</div>
+      <div style="font-size:0.875em;font-weight:500;color:#6b7280;margin-top:0.125em;">{{ clockDate }}</div>
     </div>
   </div>
 
   <sc-if value="{{ isCourseScreen }}" hint-placeholder-val="{{ true }}">
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3em;">
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.25em;padding:0 2em;">
       <div style="text-align:center;">
-        <div style="font-size:3.25em;font-weight:800;color:#1c2230;letter-spacing:-0.02em;">과정을 선택해주세요</div>
-        <div style="font-size:1.375em;color:#7a8091;margin-top:0.875em;">Select your program</div>
+        <div style="font-size:2.25em;font-weight:800;color:#1c2230;letter-spacing:-0.02em;">과정을 선택해주세요</div>
+        <div style="font-size:1em;color:#7a8091;margin-top:0.75em;">Select your program</div>
       </div>
-      <div style="display:flex;gap:3.5em;">
-        <button onClick="{{ selectCourse }}" data-course="phd" style="width:26.25em;height:26.25em;border-radius:2em;border:none;background:#33417a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25em;cursor:pointer;box-shadow:0 1.25em 2.5em -0.75em rgba(51,65,122,0.45);transition:transform .15s ease;" style-hover="transform:scale(1.03);">
-          <div style="font-size:5.5em;">🎓</div>
-          <div style="font-size:2.75em;font-weight:800;">박사과정생</div>
-          <div style="font-size:1.25em;opacity:.75;font-weight:500;">{{ phdCount }}명</div>
+      <div style="display:flex;flex-direction:column;gap:1.5em;width:100%;max-width:32em;">
+        <button onClick="{{ selectCourse }}" data-course="phd" style="width:100%;height:8.5em;border-radius:1.75em;border:none;background:#33417a;color:#fff;display:flex;align-items:center;justify-content:center;gap:1.25em;cursor:pointer;box-shadow:0 1.25em 2.5em -0.75em rgba(51,65,122,0.45);transition:transform .15s ease;padding:0 2em;" style-hover="transform:scale(1.02);">
+          <div style="font-size:3.25em;">🎓</div>
+          <div style="text-align:left;">
+            <div style="font-size:1.625em;font-weight:800;">박사과정생</div>
+            <div style="font-size:0.95em;opacity:.75;font-weight:500;margin-top:0.25em;">{{ phdCount }}명</div>
+          </div>
         </button>
-        <button onClick="{{ selectCourse }}" data-course="master" style="width:26.25em;height:26.25em;border-radius:2em;border:none;background:#2f7a63;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25em;cursor:pointer;box-shadow:0 1.25em 2.5em -0.75em rgba(47,122,99,0.45);transition:transform .15s ease;" style-hover="transform:scale(1.03);">
-          <div style="font-size:5.5em;">📘</div>
-          <div style="font-size:2.75em;font-weight:800;">석사과정생</div>
-          <div style="font-size:1.25em;opacity:.75;font-weight:500;">{{ masterCount }}명</div>
+        <button onClick="{{ selectCourse }}" data-course="master" style="width:100%;height:8.5em;border-radius:1.75em;border:none;background:#2f7a63;color:#fff;display:flex;align-items:center;justify-content:center;gap:1.25em;cursor:pointer;box-shadow:0 1.25em 2.5em -0.75em rgba(47,122,99,0.45);transition:transform .15s ease;padding:0 2em;" style-hover="transform:scale(1.02);">
+          <div style="font-size:3.25em;">📘</div>
+          <div style="text-align:left;">
+            <div style="font-size:1.625em;font-weight:800;">석사과정생</div>
+            <div style="font-size:0.95em;opacity:.75;font-weight:500;margin-top:0.25em;">{{ masterCount }}명</div>
+          </div>
         </button>
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ isNameScreen }}" hint-placeholder-val="{{ false }}">
-    <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:1.25em 4em 3em 4em;">
-      <div style="display:flex;align-items:center;gap:1.5em;margin-bottom:2em;">
-        <button onClick="{{ goToCourse }}" style="border:none;background:#e7e5df;color:#1c2230;font-size:1.25em;font-weight:700;padding:1em 1.625em;border-radius:1em;cursor:pointer;">← 뒤로</button>
-        <div style="font-size:2.125em;font-weight:800;color:#1c2230;">{{ courseLabel }} <span style="color:#9098a8;font-weight:600;font-size:1.5em;">이름을 선택해주세요</span></div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:1em 2em 2em 2em;">
+      <div style="display:flex;align-items:center;gap:1em;margin-bottom:1.5em;">
+        <button onClick="{{ goToCourse }}" style="border:none;background:#e7e5df;color:#1c2230;font-size:1em;font-weight:700;padding:0.875em 1.375em;border-radius:1em;cursor:pointer;">← 뒤로</button>
+        <div style="font-size:1.5em;font-weight:800;color:#1c2230;">{{ courseLabel }} <span style="color:#9098a8;font-weight:600;font-size:0.75em;">이름을 선택해주세요</span></div>
       </div>
-      <div style="flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:1.5em;align-content:start;">
+      <div style="flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1em;align-content:start;">
         <sc-for list="{{ filteredNames }}" as="person" hint-placeholder-count="15">
-          <button onClick="{{ selectName }}" data-name="{{ person }}" style="height:7.5em;border-radius:1.25em;border:0.125em solid #e2e0d8;background:#fff;color:#1c2230;font-size:1.875em;font-weight:700;cursor:pointer;box-shadow:0 0.125em 0.375em rgba(0,0,0,0.04);transition:all .12s ease;" style-hover="border-color:#33417a;background:#f2f4fb;transform:translateY(-0.125em);">
+          <button onClick="{{ selectName }}" data-name="{{ person }}" style="height:6.5em;border-radius:1.25em;border:0.125em solid #e2e0d8;background:#fff;color:#1c2230;font-size:1.5em;font-weight:700;cursor:pointer;box-shadow:0 0.125em 0.375em rgba(0,0,0,0.04);transition:all .12s ease;" style-hover="border-color:#33417a;background:#f2f4fb;transform:translateY(-0.125em);">
             {{ person }}
           </button>
         </sc-for>
@@ -66,38 +70,38 @@
   </sc-if>
 
   <sc-if value="{{ isActionScreen }}" hint-placeholder-val="{{ false }}">
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.75em;">
-      <div style="display:flex;align-items:center;gap:1.5em;position:absolute;top:10.625em;left:4em;">
-        <button onClick="{{ goToName }}" style="border:none;background:#e7e5df;color:#1c2230;font-size:1.25em;font-weight:700;padding:1em 1.625em;border-radius:1em;cursor:pointer;">← 뒤로</button>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.25em;padding:0 2em;">
+      <div style="position:absolute;top:6.5em;left:2em;">
+        <button onClick="{{ goToName }}" style="border:none;background:#e7e5df;color:#1c2230;font-size:1em;font-weight:700;padding:0.875em 1.375em;border-radius:1em;cursor:pointer;">← 뒤로</button>
       </div>
       <div style="text-align:center;">
-        <div style="font-size:1.5em;color:#7a8091;font-weight:600;">{{ courseLabel }}</div>
-        <div style="font-size:3.5em;font-weight:800;color:#1c2230;margin-top:0.375em;">{{ selectedName }}</div>
+        <div style="font-size:1.25em;color:#7a8091;font-weight:600;">{{ courseLabel }}</div>
+        <div style="font-size:2.75em;font-weight:800;color:#1c2230;margin-top:0.25em;">{{ selectedName }}</div>
       </div>
-      <div style="display:flex;gap:3em;">
-        <button onClick="{{ pickAction }}" data-action="in" style="width:18.75em;height:13.75em;border-radius:1.75em;cursor:pointer;font-size:2.25em;font-weight:800;display:flex;align-items:center;justify-content:center;transition:all .12s ease;{{ inButtonStyle }}">출근</button>
-        <button onClick="{{ pickAction }}" data-action="out" style="width:18.75em;height:13.75em;border-radius:1.75em;cursor:pointer;font-size:2.25em;font-weight:800;display:flex;align-items:center;justify-content:center;transition:all .12s ease;{{ outButtonStyle }}">퇴근</button>
+      <div style="display:flex;gap:1.5em;width:100%;max-width:26em;">
+        <button onClick="{{ pickAction }}" data-action="in" style="flex:1;height:8em;border-radius:1.75em;cursor:pointer;font-size:1.75em;font-weight:800;display:flex;align-items:center;justify-content:center;transition:all .12s ease;{{ inButtonStyle }}">출근</button>
+        <button onClick="{{ pickAction }}" data-action="out" style="flex:1;height:8em;border-radius:1.75em;cursor:pointer;font-size:1.75em;font-weight:800;display:flex;align-items:center;justify-content:center;transition:all .12s ease;{{ outButtonStyle }}">퇴근</button>
       </div>
-      <button onClick="{{ submit }}" disabled="{{ submitDisabled }}" style="width:25em;height:5.5em;border-radius:1.375em;border:none;font-size:1.875em;font-weight:800;cursor:pointer;margin-top:0.5em;{{ submitButtonStyle }}">
+      <button onClick="{{ submit }}" disabled="{{ submitDisabled }}" style="width:100%;max-width:26em;height:4.5em;border-radius:1.375em;border:none;font-size:1.5em;font-weight:800;cursor:pointer;margin-top:0.25em;{{ submitButtonStyle }}">
         {{ submitLabel }}
       </button>
     </div>
   </sc-if>
 
   <sc-if value="{{ isSuccessScreen }}" hint-placeholder-val="{{ false }}">
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.75em;animation:fadeIn .3s ease;">
-      <div style="width:10em;height:10em;border-radius:50%;background:{{ successColor }};display:flex;align-items:center;justify-content:center;font-size:5.5em;color:#fff;animation:popIn .35s cubic-bezier(.34,1.56,.64,1);">✓</div>
-      <div style="font-size:2.75em;font-weight:800;color:#1c2230;text-align:center;">{{ selectedName }}님, {{ successActionLabel }} 처리되었습니다</div>
-      <div style="font-size:1.5em;color:#7a8091;font-weight:600;">{{ clockTime }} 기록됨</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5em;animation:fadeIn .3s ease;padding:0 2.5em;">
+      <div style="width:8em;height:8em;border-radius:50%;background:{{ successColor }};display:flex;align-items:center;justify-content:center;animation:popIn .35s cubic-bezier(.34,1.56,.64,1);"><span style="font-size:4.25em;color:#fff;">✓</span></div>
+      <div style="font-size:2.125em;font-weight:800;color:#1c2230;text-align:center;">{{ selectedName }}님, {{ successActionLabel }} 처리되었습니다</div>
+      <div style="font-size:1.25em;color:#7a8091;font-weight:600;">{{ clockTime }} 기록됨</div>
     </div>
   </sc-if>
 
   <sc-if value="{{ warning }}" hint-placeholder-val="{{ false }}">
-    <div style="position:absolute;inset:0;background:rgba(20,20,20,0.55);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s ease;">
-      <div style="background:#fff;border-radius:1.75em;padding:3.5em 4em;max-width:40em;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.5em;box-shadow:0 1.875em 3.75em rgba(0,0,0,0.3);">
-        <div style="width:6.25em;height:6.25em;border-radius:50%;background:#fdece9;color:#c1440e;font-size:3.25em;display:flex;align-items:center;justify-content:center;">⚠</div>
-        <div style="font-size:1.875em;font-weight:800;color:#1c2230;line-height:1.4;">{{ warning }}</div>
-        <button onClick="{{ dismissWarning }}" style="width:16.25em;height:4.75em;border-radius:1.125em;border:none;background:#1c2230;color:#fff;font-size:1.5em;font-weight:700;cursor:pointer;">확인</button>
+    <div style="position:absolute;inset:0;background:rgba(20,20,20,0.55);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s ease;padding:2em;">
+      <div style="background:#fff;border-radius:1.75em;padding:2.75em 2.5em;max-width:26em;width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.375em;box-shadow:0 1.875em 3.75em rgba(0,0,0,0.3);">
+        <div style="width:5em;height:5em;border-radius:50%;background:#fdece9;color:#c1440e;display:flex;align-items:center;justify-content:center;"><span style="font-size:2.75em;">⚠</span></div>
+        <div style="font-size:1.5em;font-weight:800;color:#1c2230;line-height:1.4;">{{ warning }}</div>
+        <button onClick="{{ dismissWarning }}" style="width:100%;height:4em;border-radius:1.125em;border:none;background:#1c2230;color:#fff;font-size:1.25em;font-weight:700;cursor:pointer;">확인</button>
       </div>
     </div>
   </sc-if>
